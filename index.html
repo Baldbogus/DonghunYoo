@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>유동훈 | Donghoon Yoo — Portfolio</title>
+<meta name="description" content="기술과 비즈니스를 잇는 개발자 유동훈의 포트폴리오. Stony Brook University 기술경영학(TSM) 전공, Computer Science 세부전공.">
+<style>
+  :root{
+    --bg:#0b0f14;
+    --bg-soft:#111722;
+    --card:#151d2b;
+    --line:#233047;
+    --text:#e8edf5;
+    --muted:#93a1b8;
+    --accent:#4f9cff;
+    --accent2:#7ee0c3;
+    --radius:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Pretendard','Apple SD Gothic Neo','Noto Sans KR',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.7;
+  }
+  ::selection{background:var(--accent);color:#fff}
+  a{color:inherit;text-decoration:none}
+  section{max-width:1040px;margin:0 auto;padding:96px 24px}
+  .label{
+    display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.14em;
+    color:var(--accent);text-transform:uppercase;margin-bottom:14px;
+  }
+  h2{font-size:2rem;font-weight:800;margin-bottom:36px;letter-spacing:-.02em}
+  .muted{color:var(--muted)}
+
+  /* ── Nav ── */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(11,15,20,.8);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1040px;margin:0 auto;padding:0 24px;height:64px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{font-weight:800;font-size:1.05rem;letter-spacing:-.01em}
+  .logo span{color:var(--accent)}
+  .nav-links{display:flex;gap:28px;font-size:.92rem;color:var(--muted)}
+  .nav-links a:hover{color:var(--text)}
+  .menu-btn{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
+
+  /* ── Hero ── */
+  header{
+    min-height:100vh;display:flex;align-items:center;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 20%,rgba(79,156,255,.12),transparent),
+      radial-gradient(ellipse 50% 40% at 20% 80%,rgba(126,224,195,.07),transparent);
+  }
+  .hero{max-width:1040px;margin:0 auto;padding:120px 24px 60px;width:100%}
+  .hero .hello{color:var(--accent);font-weight:700;margin-bottom:16px;font-size:1.05rem}
+  .hero h1{font-size:clamp(2.4rem,6vw,4rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:20px}
+  .hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{max-width:620px;color:var(--muted);font-size:1.08rem;margin-bottom:36px}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:12px;
+    font-weight:700;font-size:.95rem;transition:.2s;
+  }
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:#3b8bf0;transform:translateY(-2px)}
+  .btn-ghost{border:1px solid var(--line);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* ── About ── */
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:start}
+  .about-text p{margin-bottom:18px;color:#c3cddd}
+  .about-text strong{color:var(--text)}
+  .fact-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;display:flex;flex-direction:column;gap:16px;
+  }
+  .fact{display:flex;flex-direction:column;gap:2px}
+  .fact .k{font-size:.78rem;letter-spacing:.1em;color:var(--accent);font-weight:700;text-transform:uppercase}
+  .fact .v{font-size:.95rem;color:#c3cddd}
+
+  /* ── Skills ── */
+  .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .skill-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;
+    transition:.2s;
+  }
+  .skill-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+  .skill-card .icon{font-size:1.6rem;margin-bottom:12px}
+  .skill-card h3{font-size:1.08rem;margin-bottom:10px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tag{
+    font-size:.8rem;padding:5px 12px;border-radius:99px;
+    background:rgba(79,156,255,.1);border:1px solid rgba(79,156,255,.25);color:#a8c8f0;
+  }
+
+  /* ── Projects ── */
+  .project{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:34px;margin-bottom:24px;transition:.2s;
+  }
+  .project:hover{border-color:var(--accent)}
+  .project-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+  .project h3{font-size:1.3rem;letter-spacing:-.01em}
+  .project .period{font-size:.85rem;color:var(--muted);white-space:nowrap;padding-top:6px}
+  .project .role{color:var(--accent);font-weight:700;font-size:.9rem;margin-bottom:14px}
+  .project ul{list-style:none;margin:14px 0 18px}
+  .project li{
+    position:relative;padding-left:22px;margin-bottom:10px;color:#c3cddd;font-size:.96rem;
+  }
+  .project li::before{content:"▹";position:absolute;left:0;color:var(--accent2)}
+  .project li b{color:var(--text)}
+
+  /* ── Experience timeline ── */
+  .timeline{position:relative;padding-left:28px}
+  .timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .titem{position:relative;margin-bottom:36px}
+  .titem::before{
+    content:"";position:absolute;left:-28px;top:8px;width:14px;height:14px;border-radius:50%;
+    background:var(--bg);border:3px solid var(--accent);
+  }
+  .titem .when{font-size:.83rem;color:var(--accent);font-weight:700;margin-bottom:4px}
+  .titem h3{font-size:1.08rem;margin-bottom:4px}
+  .titem p{color:var(--muted);font-size:.94rem}
+
+  /* ── Education ── */
+  .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .edu-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .edu-card h3{font-size:1.05rem;margin-bottom:6px}
+  .edu-card .sub{color:var(--accent);font-size:.88rem;font-weight:700;margin-bottom:10px}
+  .edu-card p{color:var(--muted);font-size:.92rem}
+
+  /* ── Contact ── */
+  .contact{text-align:center}
+  .contact p{max-width:520px;margin:0 auto 32px;color:var(--muted)}
+
+  footer{border-top:1px solid var(--line);padding:28px 24px;text-align:center;color:var(--muted);font-size:.85rem}
+
+  /* ── Project card click hint ── */
+  .project{cursor:pointer}
+  .project .more{
+    display:inline-flex;align-items:center;gap:6px;margin-top:16px;
+    font-size:.88rem;font-weight:700;color:var(--accent);
+  }
+  .project:hover .more{text-decoration:underline}
+
+  /* ── Modal ── */
+  .modal-overlay{
+    position:fixed;inset:0;z-index:200;background:rgba(5,8,12,.75);backdrop-filter:blur(6px);
+    display:none;align-items:flex-start;justify-content:center;padding:48px 20px;overflow-y:auto;
+  }
+  .modal-overlay.open{display:flex}
+  .modal{
+    background:var(--bg-soft);border:1px solid var(--line);border-radius:20px;
+    max-width:760px;width:100%;padding:40px;position:relative;
+    animation:pop .25s ease;
+  }
+  @keyframes pop{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  .modal-close{
+    position:absolute;top:18px;right:18px;background:var(--card);border:1px solid var(--line);
+    color:var(--muted);width:38px;height:38px;border-radius:50%;font-size:1.1rem;cursor:pointer;transition:.2s;
+  }
+  .modal-close:hover{color:var(--text);border-color:var(--accent)}
+  .modal .m-meta{color:var(--accent);font-weight:700;font-size:.88rem;margin-bottom:8px}
+  .modal h3{font-size:1.5rem;margin-bottom:6px;letter-spacing:-.01em;padding-right:40px}
+  .modal .m-sub{color:var(--muted);font-size:.92rem;margin-bottom:22px}
+  .modal h4{font-size:1.02rem;color:var(--accent2);margin:22px 0 10px}
+  .modal p{color:#c3cddd;font-size:.96rem;margin-bottom:12px}
+  .modal ul{list-style:none;margin-bottom:6px}
+  .modal li{position:relative;padding-left:22px;margin-bottom:9px;color:#c3cddd;font-size:.95rem}
+  .modal li::before{content:"▹";position:absolute;left:0;color:var(--accent2)}
+  .modal .m-actions{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+  body.modal-open{overflow:hidden}
+
+  /* ── Reveal animation ── */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.on{opacity:1;transform:none}
+
+  /* ── Responsive ── */
+  @media(max-width:820px){
+    .about-grid,.edu-grid{grid-template-columns:1fr}
+    .skills-grid{grid-template-columns:1fr}
+    .nav-links{
+      display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;
+      background:var(--bg-soft);border-bottom:1px solid var(--line);
+    }
+    .nav-links.open{display:flex}
+    .nav-links a{padding:16px 24px;border-top:1px solid var(--line)}
+    .menu-btn{display:block}
+    section{padding:72px 20px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">Donghoon<span>.</span>Yoo</a>
+    <button class="menu-btn" id="menuBtn" aria-label="menu">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="hero">
+    <p class="hello">안녕하세요, 유동훈입니다 👋</p>
+    <h1>기술과 비즈니스를 잇는<br><em>개발자 · 기술 기획자</em></h1>
+    <p>
+      Stony Brook University에서 기술경영학(Technological Systems Management)을 전공하고
+      Computer Science를 세부전공했습니다. 코드를 직접 작성하는 개발 역량 위에,
+      "이 기술로 어떤 문제를 해결할 것인가"를 먼저 묻는 시스템적 사고를 더해
+      기술이 실제 가치를 만드는 과정 전체를 다룹니다.
+    </p>
+    <div class="btn-row">
+      <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
+      <a href="#contact" class="btn btn-ghost">연락하기</a>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="reveal">
+  <span class="label">About Me</span>
+  <h2>기술을 사람의 문제로 번역합니다</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        처음에는 컴퓨터 공학 자체의 매력으로 프로그래밍을 시작했습니다. Python과 SQL로
+        데이터를 다루고 논리적인 코드를 짜는 과정에 흥미를 느꼈고, 전공 과정을 거치며
+        기술이 <strong>실제 비즈니스 환경에서 어떻게 작동하고 어떤 가치를 만드는지</strong>
+        시스템 관점에서 조망하는 훈련을 쌓았습니다.
+      </p>
+      <p>
+        완벽한 정답을 찾기 위해 멈춰있기보다 <strong>일단 부딪히며 해답을 깎아나가는</strong> 편입니다.
+        해커톤에서는 빠르게 문제를 정의하고 핵심 기능만 담은 프로토타입을 기한 내에 완성했고,
+        VR 프로젝트에서는 Lead Developer로 기술 타당성 평가부터 아키텍처 설계까지 주도했습니다.
+      </p>
+      <p>
+        초등학생 코딩 교육 멘토링을 통해 복잡한 기술 개념을 <strong>누구나 이해할 수 있는 언어로
+        번역하는 커뮤니케이션</strong>을 훈련했습니다. 개발팀과 기술적 대화가 가능한 엔지니어링
+        이해도를 바탕으로, 개발자와 비즈니스 이해관계자 사이의 간극을 메우는 역할을 지향합니다.
+      </p>
+    </div>
+    <div class="fact-card">
+      <div class="fact"><span class="k">Name</span><span class="v">유동훈 (Donghoon Yoo)</span></div>
+      <div class="fact"><span class="k">Education</span><span class="v">한국뉴욕주립대 (Stony Brook University)<br>기술경영학(TSM) · CS 세부전공</span></div>
+      <div class="fact"><span class="k">Focus</span><span class="v">Software Development · Data Analysis · Technical PM</span></div>
+      <div class="fact"><span class="k">Email</span><span class="v">ybh8088@gmail.com</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="reveal">
+  <span class="label">Skills</span>
+  <h2>기술 스택 &amp; 역량</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="icon">💻</div>
+      <h3>Programming</h3>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">Java</span><span class="tag">SQL</span>
+        <span class="tag">Bash</span><span class="tag">Ruby</span><span class="tag">Unity (C#)</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="icon">📊</div>
+      <h3>Data &amp; Analysis</h3>
+      <div class="tags">
+        <span class="tag">Open API 데이터 수집</span><span class="tag">데이터 정제·분석 파이프라인</span>
+        <span class="tag">가설 수립·통계적 검증</span><span class="tag">리서치·시장 분석</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="icon">🧭</div>
+      <h3>Management &amp; Tools</h3>
+      <div class="tags">
+        <span class="tag">기술 타당성 평가</span><span class="tag">마일스톤·일정 관리</span>
+        <span class="tag">이해관계자 커뮤니케이션</span><span class="tag">MS Office · 한글</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="reveal">
+  <span class="label">Projects</span>
+  <h2>주요 프로젝트</h2>
+
+  <div class="project" data-modal="vr">
+    <div class="project-top">
+      <h3>🥽 VR 기반 디지털 치료제 연구 개발</h3>
+      <span class="period">2025.08 – 2025.12</span>
+    </div>
+    <p class="role">Lead Developer · Stony Brook University</p>
+    <ul>
+      <li><b>문제 정의</b> — VR/AI를 접목한 디지털 치료 기술 검증을 위한 프로토타입 부재와 기술적 불확실성.</li>
+      <li><b>기술 리더십</b> — 기술 타당성 평가(Technical Assessment)를 주도·문서화하여 프로젝트의 기술 방향성과 요구사항 정의.</li>
+      <li><b>협업 설계</b> — 마일스톤 수립과 업무 분배로 팀 개발 프로세스 환경 조성.</li>
+      <li><b>결과</b> — Unity 엔진 기반 핸드 트래킹 등 사용자 상호작용(UX)을 고려한 핵심 아키텍처 설계 및 프로토타입을 기한 내 구현 완료.</li>
+    </ul>
+    <div class="tags"><span class="tag">Unity</span><span class="tag">VR/XR</span><span class="tag">Hand Tracking</span><span class="tag">Tech Assessment</span></div>
+    <span class="more">자세히 보기 →</span>
+  </div>
+
+  <div class="project" data-modal="f1">
+    <div class="project-top">
+      <h3>🏎️ Open API 기반 F1 레이싱 데이터 분석</h3>
+      <span class="period">2026.02 – 2026.06</span>
+    </div>
+    <p class="role">기획 · 분석 · Stony Brook University</p>
+    <ul>
+      <li><b>가설 수립</b> — "예선(Qualifying) 순위가 최종 레이스 결과에 미치는 영향"이라는 핵심 가설로 데이터 기반 문제 정의.</li>
+      <li><b>파이프라인 구축</b> — Open API로 수년간의 글로벌 경기 원시 데이터를 수집하고, 추출·정제 코드를 직접 작성해 분석 파이프라인 구축.</li>
+      <li><b>검증</b> — 변수 간 통계적 상관관계 분석으로 초기 가설을 실제 데이터로 검증.</li>
+      <li><b>결과</b> — 단순 데이터 추출을 넘어 유의미한 비즈니스·전략적 결론을 도출하는 역량 입증.</li>
+    </ul>
+    <div class="tags"><span class="tag">Python</span><span class="tag">Open API</span><span class="tag">Data Pipeline</span><span class="tag">통계 분석</span></div>
+    <span class="more">자세히 보기 →</span>
+  </div>
+
+  <div class="project" data-modal="ai">
+    <div class="project-top">
+      <h3>🤖 AI 산업 동향 &amp; SW 엔지니어링 노동시장 리서치</h3>
+      <span class="period">2026.02 – 2026.06</span>
+    </div>
+    <p class="role">프로젝트 기획 · 분석 · Stony Brook University</p>
+    <ul>
+      <li><b>가설 수립</b> — "AI가 소프트웨어 엔지니어의 숙련도에 따라 노동시장 양극화를 만들 것"이라는 구체적 가설 정의.</li>
+      <li><b>리서치</b> — Stanford HAI, Stack Overflow 등 신뢰도 높은 글로벌 기관의 2차 데이터셋과 문헌을 다각도로 분석.</li>
+      <li><b>번역</b> — 방대한 영문 리서치와 시장 지표를 구조화해 비즈니스·경제적 관점의 언어로 전달.</li>
+      <li><b>결과</b> — 임금 정체·신규 수요 창출 등 인사이트를 도출, 전략 리포트로 전환하여 비즈니스 임팩트 정의.</li>
+    </ul>
+    <div class="tags"><span class="tag">Market Research</span><span class="tag">Secondary Data</span><span class="tag">전략 리포트</span><span class="tag">AI/LLM 트렌드</span></div>
+    <span class="more">자세히 보기 →</span>
+  </div>
+</section>
+
+<section id="experience" class="reveal">
+  <span class="label">Experience &amp; Activities</span>
+  <h2>경험 &amp; 활동</h2>
+  <div class="timeline">
+    <div class="titem">
+      <div class="when">2024.04</div>
+      <h3>교내 동아리 LAMDA — 람다톤 (해커톤)</h3>
+      <p>'지속가능성' 주제의 아이디어를 시장성 있는 기획으로 구체화하고 프로토타입까지 단기간에 제작. 타이트한 일정과 제한된 자원 속에서 기획→제작 사이클 완수.</p>
+    </div>
+    <div class="titem">
+      <div class="when">2024.03 – 2024.06</div>
+      <h3>태영휘트니스 — 고객 서비스 매니지먼트</h3>
+      <p>인포데스크 고객 응대, 회원 등록·결제 관리. 데이터 지표만으로 알기 어려운 사용자의 실제 불편함을 현장에서 이해한 경험.</p>
+    </div>
+    <div class="titem">
+      <div class="when">2022.08 – 2024.02</div>
+      <h3>대한민국 육군 — 중형차량운전병 (병장 만기전역)</h3>
+      <p>책임감과 성실함을 기반으로 복무 완수.</p>
+    </div>
+    <div class="titem">
+      <div class="when">2022.03 – 2022.06</div>
+      <h3>교내 동아리 CO;Ders — 코딩 교육 멘토</h3>
+      <p>초등학생 대상 Scratch 코딩 교육 프로그램 기획·멘토링. 복잡한 기술 개념을 눈높이에 맞춰 전달하는 커뮤니케이션 역량 확보.</p>
+    </div>
+  </div>
+</section>
+
+<section id="education" class="reveal">
+  <span class="label">Education &amp; Certificates</span>
+  <h2>학력 &amp; 자격</h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <h3>한국뉴욕주립대학교 (Stony Brook University)</h3>
+      <p class="sub">2020.08 – 2026.08 (졸업 예정)</p>
+      <p>기술경영학과 (Technological Systems Management) 전공<br>컴퓨터과학 (Computer Science) 세부전공<br>인천 송도 · 미국 뉴욕</p>
+    </div>
+    <div class="edu-card">
+      <h3>자격증</h3>
+      <p class="sub">Certificates</p>
+      <p>초경량비행장치 조종자 — 무인멀티콥터 1종 (한국교통안전공단, 2022)<br>운전면허 1종 보통 (2019)</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="reveal contact">
+  <span class="label">Contact</span>
+  <h2>함께 일하고 싶다면</h2>
+  <p>
+    새로운 기회와 협업 제안을 환영합니다.<br>
+    이메일을 보내주시면 빠르게 답변드리겠습니다.
+  </p>
+  <div class="btn-row" style="justify-content:center">
+    <a href="mailto:ybh8088@gmail.com" class="btn btn-primary">✉️ ybh8088@gmail.com</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Donghoon Yoo. Built with HTML/CSS/JS.
+</footer>
+
+<!-- ── Project Modals ── -->
+<div class="modal-overlay" id="modal-vr">
+  <div class="modal">
+    <button class="modal-close" aria-label="닫기">✕</button>
+    <p class="m-meta">EST 440 · Interdisciplinary Research Methods · Fall 2025</p>
+    <h3>Virtual Reality in PTSD Treatment</h3>
+    <p class="m-sub">VR 기반 PTSD 디지털 치료제 연구 개발 · Lead Developer · 5인 팀</p>
+    <h4>프로젝트 배경</h4>
+    <p>
+      군 장병·재향군인은 PTSD 치료가 가장 필요한 집단이지만 효과적이고 확장 가능한 치료 옵션에 대한
+      접근성이 낮습니다. VR은 통제된 몰입형 노출 환경을 제공해 기존 노출 치료의 물리적·안전상 한계를
+      보완할 수 있다는 점에 주목했습니다. "기술은 무엇보다 인간의 웰빙을 위해 설계되어야 한다"는
+      철학을 바탕으로, 임상적 프레임워크 안에서 작동하는 VR 치료 프로토타입을 개발했습니다.
+    </p>
+    <h4>주요 수행 내용</h4>
+    <ul>
+      <li>단계적 노출(Staged Exposure) 환경과 생체신호 기반 모니터링을 포함한 VR 프로토타입 설계·구현</li>
+      <li>기술 타당성 평가(Technical Assessment)를 주도·문서화하여 기술 방향성과 요구사항 정의</li>
+      <li>Scope·기술 근거·혁신 가치·정책 고려사항(STIP)을 분석해 실제 디지털 치료제로의 전환 가능성 검토</li>
+      <li>Lead Developer로서 마일스톤 수립·업무 분배, Unity 기반 핸드 트래킹 등 UX 중심 아키텍처 구현</li>
+    </ul>
+    <h4>성과</h4>
+    <p>
+      VR 노출 치료의 임상적 근거(메타분석 문헌)와 기술 구현을 연결한 프로토타입을 기한 내 완성하고,
+      기술·정책을 아우르는 연구 보고서로 정리했습니다.
+    </p>
+    <div class="m-actions">
+      <a href="projects/vr-ptsd-treatment.pdf" target="_blank" class="btn btn-primary">📄 보고서 PDF 보기</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-f1">
+  <div class="modal">
+    <button class="modal-close" aria-label="닫기">✕</button>
+    <p class="m-meta">EST 389 · Spring 2026 · 4인 팀</p>
+    <h3>How Much Does Qualifying Position Determine Race Outcomes in Formula 1?</h3>
+    <p class="m-sub">Open API 기반 F1 레이싱 데이터 분석 및 가설 검증 · 기획 &amp; 분석</p>
+    <h4>연구 질문</h4>
+    <ul>
+      <li>예선(Qualifying) 순위는 우승 확률에 얼마나 영향을 미치는가?</li>
+      <li>Safety Car·Red Flag 이벤트는 레이스 중 순위 변동에 어떤 영향을 주는가?</li>
+      <li>예선 순위의 효과는 서킷별로 어떻게 달라지는가?</li>
+      <li>예선 순위의 중요도는 최근 시즌에 걸쳐 변화했는가?</li>
+    </ul>
+    <h4>주요 수행 내용</h4>
+    <ul>
+      <li>Open API로 하이브리드 시대(2014–2024) F1 경기 원시 데이터를 수집하고 추출·정제 코드를 직접 작성해 분석 파이프라인 구축</li>
+      <li>전체·서킷별·시즌별 다차원 분석으로 변수 간 통계적 상관관계 검증</li>
+    </ul>
+    <h4>핵심 발견</h4>
+    <p>
+      예선 순위는 레이스 결과, 특히 우승의 강력한 구조적 결정 요인이지만 그 효과는 서킷에 따라
+      크게 달라지며 Safety Car 이벤트로 부분적으로 흔들릴 수 있음을 데이터로 검증했습니다.
+      단순 데이터 추출을 넘어 유의미한 전략적 결론을 도출하는 역량을 입증한 프로젝트입니다.
+    </p>
+    <div class="m-actions">
+      <a href="projects/f1-qualifying-analysis.pdf" target="_blank" class="btn btn-primary">📄 보고서 PDF 보기</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-ai">
+  <div class="modal">
+    <button class="modal-close" aria-label="닫기">✕</button>
+    <p class="m-meta">EST 441 · Spring 2026 · 개인 연구</p>
+    <h3>How Does AI's Automation Technology Affect Employment in the Software Engineering Field?</h3>
+    <p class="m-sub">AI 자동화가 SW 엔지니어링 고용시장에 미치는 영향 분석 · 단독 저자</p>
+    <h4>문제 의식</h4>
+    <p>
+      AI 도구가 일상화된 캠퍼스로 복학하며, 제가 곧 진입할 소프트웨어 엔지니어링 노동시장이
+      2~3년 전과 근본적으로 달라졌음을 체감했습니다. "AI 자동화의 고용 효과는 균일하지 않고,
+      개발자의 숙련도·전문성·업무 유형에 따라 차별적으로 나타날 것"이라는 가설을 세웠습니다.
+    </p>
+    <h4>주요 수행 내용</h4>
+    <ul>
+      <li>2023–2026년 노동시장 지표·생산성 데이터·직군별 경험 데이터를 수집·분석 (Stanford HAI, Stack Overflow 등 2차 데이터 활용)</li>
+      <li>주니어/시니어 개발자 간 차별적 영향, 신규 AI 직군의 등장, 임금 격차의 크기를 구조적으로 분석</li>
+    </ul>
+    <h4>핵심 발견</h4>
+    <ul>
+      <li>주니어 개발자의 업무는 AI 도구로 빠르게 대체되며 신입 채용이 크게 감소</li>
+      <li>고숙련 엔지니어는 AI로 생산성이 크게 상승해 고용주에게 제공하는 가치가 증대</li>
+      <li>AI 전문 직군이라는 완전히 새로운 카테고리가 등장, 임금 양극화 심화</li>
+    </ul>
+    <div class="m-actions">
+      <a href="projects/ai-labor-market.pdf" target="_blank" class="btn btn-primary">📄 논문 PDF 보기</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // mobile menu
+  const menuBtn=document.getElementById('menuBtn');
+  const navLinks=document.getElementById('navLinks');
+  menuBtn.addEventListener('click',()=>navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+  // project modals
+  document.querySelectorAll('.project[data-modal]').forEach(card=>{
+    card.addEventListener('click',()=>{
+      const m=document.getElementById('modal-'+card.dataset.modal);
+      if(m){m.classList.add('open');document.body.classList.add('modal-open');}
+    });
+  });
+  document.querySelectorAll('.modal-overlay').forEach(ov=>{
+    ov.addEventListener('click',e=>{
+      if(e.target===ov||e.target.classList.contains('modal-close')){
+        ov.classList.remove('open');document.body.classList.remove('modal-open');
+      }
+    });
+    ov.querySelector('.modal').addEventListener('click',e=>{
+      if(e.target.closest('a'))e.stopPropagation();
+      else e.stopPropagation();
+    });
+    ov.querySelector('.modal-close').addEventListener('click',()=>{
+      ov.classList.remove('open');document.body.classList.remove('modal-open');
+    });
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){
+      document.querySelectorAll('.modal-overlay.open').forEach(ov=>ov.classList.remove('open'));
+      document.body.classList.remove('modal-open');
+    }
+  });
+
+  // scroll reveal
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
