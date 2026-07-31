@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donghun Yoo — Portfolio</title>
+<meta name="description" content="Portfolio of Donghun Yoo — developer and technical strategist. B.S. in Technological Systems Management with a Computer Science specialization, Stony Brook University.">
+<style>
+  :root{
+    --bg:#0b0f14;
+    --bg-soft:#111722;
+    --card:#151d2b;
+    --line:#233047;
+    --text:#e8edf5;
+    --muted:#93a1b8;
+    --accent:#4f9cff;
+    --accent2:#7ee0c3;
+    --radius:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Pretendard','Apple SD Gothic Neo','Noto Sans KR',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.7;
+  }
+  ::selection{background:var(--accent);color:#fff}
+  a{color:inherit;text-decoration:none}
+  section{max-width:1040px;margin:0 auto;padding:96px 24px}
+  .label{
+    display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.14em;
+    color:var(--accent);text-transform:uppercase;margin-bottom:14px;
+  }
+  h2{font-size:2rem;font-weight:800;margin-bottom:36px;letter-spacing:-.02em}
+  .muted{color:var(--muted)}
+
+  /* ── Nav ── */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(11,15,20,.8);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1040px;margin:0 auto;padding:0 24px;height:64px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{font-weight:800;font-size:1.05rem;letter-spacing:-.01em}
+  .logo span{color:var(--accent)}
+  .nav-links{display:flex;gap:28px;font-size:.92rem;color:var(--muted);align-items:center}
+  .nav-links a:hover{color:var(--text)}
+  .lang-btn{
+    border:1px solid var(--line);border-radius:99px;padding:5px 14px;font-weight:700;color:var(--text);
+  }
+  .lang-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .menu-btn{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
+
+  /* ── Hero ── */
+  header{
+    min-height:100vh;display:flex;align-items:center;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 20%,rgba(79,156,255,.12),transparent),
+      radial-gradient(ellipse 50% 40% at 20% 80%,rgba(126,224,195,.07),transparent);
+  }
+  .hero{max-width:1040px;margin:0 auto;padding:120px 24px 60px;width:100%}
+  .hero .hello{color:var(--accent);font-weight:700;margin-bottom:16px;font-size:1.05rem}
+  .hero h1{font-size:clamp(2.4rem,6vw,4rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:20px}
+  .hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{max-width:620px;color:var(--muted);font-size:1.08rem;margin-bottom:36px}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:12px;
+    font-weight:700;font-size:.95rem;transition:.2s;
+  }
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:#3b8bf0;transform:translateY(-2px)}
+  .btn-ghost{border:1px solid var(--line);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* ── About ── */
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:start}
+  .about-text p{margin-bottom:18px;color:#c3cddd}
+  .about-text strong{color:var(--text)}
+  .fact-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;display:flex;flex-direction:column;gap:16px;
+  }
+  .fact{display:flex;flex-direction:column;gap:2px}
+  .fact .k{font-size:.78rem;letter-spacing:.1em;color:var(--accent);font-weight:700;text-transform:uppercase}
+  .fact .v{font-size:.95rem;color:#c3cddd}
+
+  /* ── Skills ── */
+  .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .skill-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;
+    transition:.2s;
+  }
+  .skill-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+  .skill-card .icon{font-size:1.6rem;margin-bottom:12px}
+  .skill-card h3{font-size:1.08rem;margin-bottom:10px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tag{
+    font-size:.8rem;padding:5px 12px;border-radius:99px;
+    background:rgba(79,156,255,.1);border:1px solid rgba(79,156,255,.25);color:#a8c8f0;
+  }
+
+  /* ── Projects ── */
+  .project{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:34px;margin-bottom:24px;transition:.2s;cursor:pointer;
+  }
+  .project:hover{border-color:var(--accent)}
+  .project-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+  .project h3{font-size:1.3rem;letter-spacing:-.01em}
+  .project .period{font-size:.85rem;color:var(--muted);white-space:nowrap;padding-top:6px}
+  .project .role{color:var(--accent);font-weight:700;font-size:.9rem;margin-bottom:14px}
+  .project ul{list-style:none;margin:14px 0 18px}
+  .project li{
+    position:relative;padding-left:22px;margin-bottom:10px;color:#c3cddd;font-size:.96rem;
+  }
+  .project li::before{content:"▹";position:absolute;left:0;color:var(--accent2)}
+  .project li b{color:var(--text)}
+  .project .more{
+    display:inline-flex;align-items:center;gap:6px;margin-top:16px;
+    font-size:.88rem;font-weight:700;color:var(--accent);
+  }
+  .project:hover .more{text-decoration:underline}
+
+  /* ── Modal ── */
+  .modal-overlay{
+    position:fixed;inset:0;z-index:200;background:rgba(5,8,12,.75);backdrop-filter:blur(6px);
+    display:none;align-items:flex-start;justify-content:center;padding:48px 20px;overflow-y:auto;
+  }
+  .modal-overlay.open{display:flex}
+  .modal{
+    background:var(--bg-soft);border:1px solid var(--line);border-radius:20px;
+    max-width:760px;width:100%;padding:40px;position:relative;
+    animation:pop .25s ease;
+  }
+  @keyframes pop{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  .modal-close{
+    position:absolute;top:18px;right:18px;background:var(--card);border:1px solid var(--line);
+    color:var(--muted);width:38px;height:38px;border-radius:50%;font-size:1.1rem;cursor:pointer;transition:.2s;
+  }
+  .modal-close:hover{color:var(--text);border-color:var(--accent)}
+  .modal .m-meta{color:var(--accent);font-weight:700;font-size:.88rem;margin-bottom:8px}
+  .modal h3{font-size:1.5rem;margin-bottom:6px;letter-spacing:-.01em;padding-right:40px}
+  .modal .m-sub{color:var(--muted);font-size:.92rem;margin-bottom:22px}
+  .modal h4{font-size:1.02rem;color:var(--accent2);margin:22px 0 10px}
+  .modal p{color:#c3cddd;font-size:.96rem;margin-bottom:12px}
+  .modal ul{list-style:none;margin-bottom:6px}
+  .modal li{position:relative;padding-left:22px;margin-bottom:9px;color:#c3cddd;font-size:.95rem}
+  .modal li::before{content:"▹";position:absolute;left:0;color:var(--accent2)}
+  .modal .m-actions{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+  body.modal-open{overflow:hidden}
+
+  /* ── Experience timeline ── */
+  .timeline{position:relative;padding-left:28px}
+  .timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .titem{position:relative;margin-bottom:36px}
+  .titem::before{
+    content:"";position:absolute;left:-28px;top:8px;width:14px;height:14px;border-radius:50%;
+    background:var(--bg);border:3px solid var(--accent);
+  }
+  .titem .when{font-size:.83rem;color:var(--accent);font-weight:700;margin-bottom:4px}
+  .titem h3{font-size:1.08rem;margin-bottom:4px}
+  .titem p{color:var(--muted);font-size:.94rem}
+
+  /* ── Education ── */
+  .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .edu-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .edu-card h3{font-size:1.05rem;margin-bottom:6px}
+  .edu-card .sub{color:var(--accent);font-size:.88rem;font-weight:700;margin-bottom:10px}
+  .edu-card p{color:var(--muted);font-size:.92rem}
+
+  /* ── Contact ── */
+  .contact{text-align:center}
+  .contact p{max-width:520px;margin:0 auto 32px;color:var(--muted)}
+
+  footer{border-top:1px solid var(--line);padding:28px 24px;text-align:center;color:var(--muted);font-size:.85rem}
+
+  /* ── Reveal animation ── */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.on{opacity:1;transform:none}
+
+  /* ── Responsive ── */
+  @media(max-width:820px){
+    .about-grid,.edu-grid{grid-template-columns:1fr}
+    .skills-grid{grid-template-columns:1fr}
+    .nav-links{
+      display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;
+      background:var(--bg-soft);border-bottom:1px solid var(--line);align-items:stretch;
+    }
+    .nav-links.open{display:flex}
+    .nav-links a{padding:16px 24px;border-top:1px solid var(--line)}
+    .menu-btn{display:block}
+    section{padding:72px 20px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">Donghun<span>.</span>Yoo</a>
+    <button class="menu-btn" id="menuBtn" aria-label="menu">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <a href="index.html" class="lang-btn">한국어</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="hero">
+    <p class="hello">Hi, I'm Donghun Yoo 👋</p>
+    <h1>Bridging <em>technology<br>and business</em></h1>
+    <p>
+      I studied Technological Systems Management with a specialization in Computer Science
+      at Stony Brook University. On top of hands-on development skills, I bring a systems-level
+      mindset that always starts with the question: "What problem does this technology solve?" —
+      covering the full journey from code to real-world value.
+    </p>
+    <div class="btn-row">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="reveal">
+  <span class="label">About Me</span>
+  <h2>I translate technology into human problems</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I started programming drawn to computer science itself — working with data in Python and SQL
+        and building logical, well-structured code. Through my degree, I trained to look beyond the code
+        and see <strong>how technology operates in real business environments and what value it creates</strong>,
+        from a whole-systems perspective.
+      </p>
+      <p>
+        Rather than waiting for the perfect answer, I prefer to <strong>dive in and carve out solutions
+        through iteration</strong>. At a hackathon, I rapidly defined the problem and shipped a working
+        prototype within a tight deadline. On a VR research project, I served as Lead Developer,
+        driving everything from the technical feasibility assessment to the software architecture.
+      </p>
+      <p>
+        Mentoring elementary school students in coding taught me to <strong>translate complex technical
+        concepts into language anyone can understand</strong>. With enough engineering depth to hold
+        technical conversations with developers, I aim to bridge the gap between engineering teams
+        and business stakeholders.
+      </p>
+    </div>
+    <div class="fact-card">
+      <div class="fact"><span class="k">Name</span><span class="v">Donghun Yoo</span></div>
+      <div class="fact"><span class="k">Education</span><span class="v">Stony Brook University (SUNY Korea)<br>B.S. Technological Systems Management · CS Specialization</span></div>
+      <div class="fact"><span class="k">Focus</span><span class="v">Software Development · Data Analysis · Technical PM</span></div>
+      <div class="fact"><span class="k">Email</span><span class="v">ybh8088@gmail.com</span></div>
+      <div class="fact"><span class="k">GitHub</span><span class="v"><a href="https://github.com/baldbogus" target="_blank" style="color:var(--accent)">github.com/baldbogus</a></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="reveal">
+  <span class="label">Skills</span>
+  <h2>Tech Stack &amp; Capabilities</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="icon">💻</div>
+      <h3>Programming</h3>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">Java</span><span class="tag">SQL</span>
+        <span class="tag">Bash</span><span class="tag">Ruby</span><span class="tag">Unity (C#)</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="icon">📊</div>
+      <h3>Data &amp; Analysis</h3>
+      <div class="tags">
+        <span class="tag">Open API data collection</span><span class="tag">Data cleaning &amp; pipelines</span>
+        <span class="tag">Hypothesis testing</span><span class="tag">Research &amp; market analysis</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="icon">🧭</div>
+      <h3>Management &amp; Tools</h3>
+      <div class="tags">
+        <span class="tag">Technical assessment</span><span class="tag">Milestones &amp; scheduling</span>
+        <span class="tag">Stakeholder communication</span><span class="tag">MS Office</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="reveal">
+  <span class="label">Projects</span>
+  <h2>Featured Projects</h2>
+
+  <div class="project" data-modal="vr">
+    <div class="project-top">
+      <h3>🥽 VR-Based Digital Therapeutics R&amp;D</h3>
+      <span class="period">Aug – Dec 2025</span>
+    </div>
+    <p class="role">Lead Developer · Stony Brook University</p>
+    <ul>
+      <li><b>Problem</b> — No working prototype and high technical uncertainty for validating a new VR/AI-based digital therapeutic approach.</li>
+      <li><b>Technical leadership</b> — Led and documented the technical feasibility assessment, defining the project's technical direction and requirements.</li>
+      <li><b>Collaboration design</b> — Set milestones and distributed work as Lead Developer, establishing a smooth development process for the team.</li>
+      <li><b>Outcome</b> — Designed the core software architecture with UX-driven interactions (hand tracking) in Unity and delivered the prototype on schedule.</li>
+    </ul>
+    <div class="tags"><span class="tag">Unity</span><span class="tag">VR/XR</span><span class="tag">Hand Tracking</span><span class="tag">Tech Assessment</span></div>
+    <span class="more">View details →</span>
+  </div>
+
+  <div class="project" data-modal="f1">
+    <div class="project-top">
+      <h3>🏎️ F1 Racing Data Analysis via Open APIs</h3>
+      <span class="period">Feb – Jun 2026</span>
+    </div>
+    <p class="role">Planning &amp; Analysis · Stony Brook University</p>
+    <ul>
+      <li><b>Hypothesis</b> — Framed a data-driven question: "How much does qualifying position determine final race outcomes?"</li>
+      <li><b>Pipeline</b> — Collected years of raw global race data via open APIs and built the extraction, cleaning, and analysis pipeline hands-on.</li>
+      <li><b>Validation</b> — Verified the initial hypothesis with real data through statistical correlation analysis.</li>
+      <li><b>Outcome</b> — Went beyond raw data extraction to demonstrate the ability to draw meaningful business and strategic conclusions.</li>
+    </ul>
+    <div class="tags"><span class="tag">Python</span><span class="tag">Open API</span><span class="tag">Data Pipeline</span><span class="tag">Statistical Analysis</span></div>
+    <span class="more">View details →</span>
+  </div>
+
+  <div class="project" data-modal="ai">
+    <div class="project-top">
+      <h3>🤖 AI Trends &amp; the Software Engineering Labor Market</h3>
+      <span class="period">Feb – Jun 2026</span>
+    </div>
+    <p class="role">Research &amp; Analysis · Stony Brook University</p>
+    <ul>
+      <li><b>Hypothesis</b> — Defined a concrete thesis: "AI will polarize the labor market along the skill level of software engineers."</li>
+      <li><b>Research</b> — Analyzed secondary datasets and literature from trusted global sources including Stanford HAI and Stack Overflow.</li>
+      <li><b>Translation</b> — Structured extensive English-language research and market indicators into clear business and economic terms.</li>
+      <li><b>Outcome</b> — Derived insights on wage stagnation and new demand creation, and turned them into a polished strategic report.</li>
+    </ul>
+    <div class="tags"><span class="tag">Market Research</span><span class="tag">Secondary Data</span><span class="tag">Strategic Report</span><span class="tag">AI/LLM Trends</span></div>
+    <span class="more">View details →</span>
+  </div>
+</section>
+
+<section id="experience" class="reveal">
+  <span class="label">Experience &amp; Activities</span>
+  <h2>Experience &amp; Activities</h2>
+  <div class="timeline">
+    <div class="titem">
+      <div class="when">Apr 2024</div>
+      <h3>LAMDA Club — "Lambdathon" Hackathon</h3>
+      <p>Shaped the broad theme of "sustainability" into a marketable idea and built a prototype in a short sprint — completing the full planning-to-build cycle under tight constraints.</p>
+    </div>
+    <div class="titem">
+      <div class="when">Mar – Jun 2024</div>
+      <h3>Taeyoung Fitness — Customer Service Management</h3>
+      <p>Front-desk customer service, membership registration, and payment management. Learned first-hand the user pain points that data metrics alone can't reveal.</p>
+    </div>
+    <div class="titem">
+      <div class="when">Aug 2022 – Feb 2024</div>
+      <h3>Republic of Korea Army — Vehicle Operator (Sergeant, honorable discharge)</h3>
+      <p>Completed mandatory military service with responsibility and discipline.</p>
+    </div>
+    <div class="titem">
+      <div class="when">Mar – Jun 2022</div>
+      <h3>CO;Ders Club — Coding Education Mentor</h3>
+      <p>Planned and mentored a Scratch coding program for elementary school students — building the communication skills to convey complex technical concepts at any level.</p>
+    </div>
+  </div>
+</section>
+
+<section id="education" class="reveal">
+  <span class="label">Education &amp; Certificates</span>
+  <h2>Education &amp; Certificates</h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <h3>Stony Brook University (SUNY Korea)</h3>
+      <p class="sub">Aug 2020 – Aug 2026 (expected)</p>
+      <p>B.S. in Technological Systems Management<br>Specialization in Computer Science<br>Songdo, Incheon · New York, USA</p>
+    </div>
+    <div class="edu-card">
+      <h3>Certificates</h3>
+      <p class="sub">Licenses</p>
+      <p>Ultralight Vehicle (Drone) Pilot — Multicopter Class 1 (Korea Transportation Safety Authority, 2022)<br>Driver's License Class 1 (2019)</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="reveal contact">
+  <span class="label">Contact</span>
+  <h2>Let's work together</h2>
+  <p>
+    I welcome new opportunities and collaboration.<br>
+    Send me an email and I'll get back to you quickly.
+  </p>
+  <div class="btn-row" style="justify-content:center">
+    <a href="mailto:ybh8088@gmail.com" class="btn btn-primary">✉️ ybh8088@gmail.com</a>
+    <a href="https://github.com/baldbogus" target="_blank" class="btn btn-ghost">🐙 GitHub</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Donghun Yoo. Built with HTML/CSS/JS.
+</footer>
+
+<!-- ── Project Modals ── -->
+<div class="modal-overlay" id="modal-vr">
+  <div class="modal">
+    <button class="modal-close" aria-label="close">✕</button>
+    <p class="m-meta">EST 440 · Interdisciplinary Research Methods · Fall 2025</p>
+    <h3>Virtual Reality in PTSD Treatment</h3>
+    <p class="m-sub">VR-based digital therapeutics research · Lead Developer · Team of 5</p>
+    <h4>Background</h4>
+    <p>
+      Military personnel and veterans are among the populations most in need of PTSD treatment,
+      yet access to effective, scalable therapeutic options remains limited. We focused on VR's
+      ability to provide controlled, immersive exposure environments that overcome the logistical
+      and safety barriers of traditional exposure therapy. Grounded in the philosophy that
+      technology should serve human well-being first, we built a VR treatment prototype designed
+      to operate within a structured clinical framework.
+    </p>
+    <h4>What I did</h4>
+    <ul>
+      <li>Designed and implemented a VR prototype featuring staged exposure environments and biometric-informed monitoring</li>
+      <li>Led and documented the technical feasibility assessment, defining the technical direction and requirements</li>
+      <li>Analyzed Scope, Technical justification, Innovation value, and Policy considerations for translation into a viable digital therapeutic</li>
+      <li>As Lead Developer, set milestones, distributed work, and built a UX-centered architecture with hand tracking in Unity</li>
+    </ul>
+    <h4>Results</h4>
+    <p>
+      Delivered on schedule a prototype connecting the clinical evidence base for VR exposure
+      therapy (meta-analytic literature) with a working technical implementation, documented in
+      a research report spanning technology and policy.
+    </p>
+    <div class="m-actions">
+      <a href="projects/vr-ptsd-treatment.pdf" target="_blank" class="btn btn-primary">📄 View Report (PDF)</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-f1">
+  <div class="modal">
+    <button class="modal-close" aria-label="close">✕</button>
+    <p class="m-meta">EST 389 · Spring 2026 · Team of 4</p>
+    <h3>How Much Does Qualifying Position Determine Race Outcomes in Formula 1?</h3>
+    <p class="m-sub">Open API-based F1 data analysis &amp; hypothesis validation · Planning &amp; Analysis</p>
+    <h4>Research Questions</h4>
+    <ul>
+      <li>How does qualifying position affect the probability of winning a race?</li>
+      <li>How do Safety Car and Red Flag events affect position changes during a race?</li>
+      <li>Does the effect of qualifying position vary across circuits?</li>
+      <li>Has the importance of qualifying position changed across recent seasons?</li>
+    </ul>
+    <h4>What I did</h4>
+    <ul>
+      <li>Collected raw F1 race data from the modern hybrid era (2014–2024) via open APIs, writing the extraction and cleaning code to build the analysis pipeline</li>
+      <li>Validated statistical correlations between variables through multi-dimensional analysis — overall, per-circuit, and per-season</li>
+    </ul>
+    <h4>Key Findings</h4>
+    <p>
+      Qualifying position is a strong structural determinant of race outcomes — particularly
+      winning — but its effect varies substantially across circuits and can be partially disrupted
+      by Safety Car events. The project demonstrated the ability to move beyond data extraction
+      to meaningful strategic conclusions.
+    </p>
+    <div class="m-actions">
+      <a href="projects/f1-qualifying-analysis.pdf" target="_blank" class="btn btn-primary">📄 View Report (PDF)</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-ai">
+  <div class="modal">
+    <button class="modal-close" aria-label="close">✕</button>
+    <p class="m-meta">EST 441 · Spring 2026 · Individual Research</p>
+    <h3>How Does AI's Automation Technology Affect Employment in the Software Engineering Field?</h3>
+    <p class="m-sub">Analysis of AI automation's impact on the software engineering job market · Sole author</p>
+    <h4>Motivation</h4>
+    <p>
+      Returning to a campus where AI tools had quietly become the norm, I realized the software
+      engineering labor market I was about to enter had fundamentally changed within just a few
+      years. I hypothesized that AI automation's employment effects are not uniform — they differ
+      by developers' experience level, expertise, and type of work.
+    </p>
+    <h4>What I did</h4>
+    <ul>
+      <li>Collected and analyzed labor market indicators, productivity data, and occupational experience data for 2023–2026 (secondary data from Stanford HAI, Stack Overflow, and others)</li>
+      <li>Structurally analyzed the differential impact on junior vs. senior developers, the emergence of new AI job categories, and the magnitude of wage gaps</li>
+    </ul>
+    <h4>Key Findings</h4>
+    <ul>
+      <li>Junior developer tasks are being rapidly replaced by AI tools, with entry-level hiring declining sharply</li>
+      <li>Highly experienced engineers gain substantial productivity from AI, increasing their value to employers</li>
+      <li>An entirely new category of AI-specialist roles has emerged, deepening wage polarization</li>
+    </ul>
+    <div class="m-actions">
+      <a href="projects/ai-labor-market.pdf" target="_blank" class="btn btn-primary">📄 View Paper (PDF)</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // mobile menu
+  const menuBtn=document.getElementById('menuBtn');
+  const navLinks=document.getElementById('navLinks');
+  menuBtn.addEventListener('click',()=>navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+  // project modals
+  document.querySelectorAll('.project[data-modal]').forEach(card=>{
+    card.addEventListener('click',()=>{
+      const m=document.getElementById('modal-'+card.dataset.modal);
+      if(m){m.classList.add('open');document.body.classList.add('modal-open');}
+    });
+  });
+  document.querySelectorAll('.modal-overlay').forEach(ov=>{
+    ov.addEventListener('click',e=>{
+      if(e.target===ov||e.target.classList.contains('modal-close')){
+        ov.classList.remove('open');document.body.classList.remove('modal-open');
+      }
+    });
+    ov.querySelector('.modal').addEventListener('click',e=>e.stopPropagation());
+    ov.querySelector('.modal-close').addEventListener('click',()=>{
+      ov.classList.remove('open');document.body.classList.remove('modal-open');
+    });
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){
+      document.querySelectorAll('.modal-overlay.open').forEach(ov=>ov.classList.remove('open'));
+      document.body.classList.remove('modal-open');
+    }
+  });
+
+  // scroll reveal
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

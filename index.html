@@ -45,8 +45,12 @@
   }
   .logo{font-weight:800;font-size:1.05rem;letter-spacing:-.01em}
   .logo span{color:var(--accent)}
-  .nav-links{display:flex;gap:28px;font-size:.92rem;color:var(--muted)}
+  .nav-links{display:flex;gap:28px;font-size:.92rem;color:var(--muted);align-items:center}
   .nav-links a:hover{color:var(--text)}
+  .lang-btn{
+    border:1px solid var(--line);border-radius:99px;padding:5px 14px;font-weight:700;color:var(--text);
+  }
+  .lang-btn:hover{border-color:var(--accent);color:var(--accent)}
   .menu-btn{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
 
   /* ── Hero ── */
@@ -207,6 +211,7 @@
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
+      <a href="index-en.html" class="lang-btn">English</a>
     </div>
   </div>
 </nav>
