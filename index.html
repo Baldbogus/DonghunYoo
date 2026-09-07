@@ -300,22 +300,6 @@
   <span class="label">Projects</span>
   <h2>주요 프로젝트</h2>
 
-  <div class="project" data-modal="kbo">
-    <div class="project-top">
-      <h3>⚾ KBO Games — KBO 선수 데이터 퀴즈 게임 3종</h3>
-      <span class="period">2026.06 – 진행중</span>
-    </div>
-    <p class="role">게임 기획 · 기능 정의 · QA · 2인 팀 (AI 페어 프로그래밍)</p>
-    <ul>
-      <li><b>기획</b> — 해외 축구 팬 퀴즈 게임(Who Are Ya / Missing XI)에서 착안해 KBO(한국프로야구) 선수 데이터로 재구성한 3종 웹 브라우저 퀴즈 게임을 기획.</li>
-      <li><b>데이터 파이프라인</b> — KBO 타자·투수 실제 기록 CSV를 Python으로 가공해 역대 선수 3,486명, WAR5+ 718명, WAR10+ 433명 데이터셋을 자체 구축하고, 현역 184명의 소속팀 정보를 다중 소스로 교차 검증.</li>
-      <li><b>AI 협업 개발</b> — AI 코딩 어시스턴트(Claude)와 페어 프로그래밍하며 기능 구현·버그 수정·배포 트러블슈팅을 진행, UI 버그를 반복적으로 개선.</li>
-      <li><b>결과</b> — Next.js 16 기반으로 kbogames.com에 실제 배포, Vercel 빌드 실패 등 실전 배포 이슈를 직접 진단·해결.</li>
-    </ul>
-    <div class="tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Tailwind CSS</span><span class="tag">Python</span><span class="tag">Vercel</span></div>
-    <span class="more">자세히 보기 →</span>
-  </div>
-
   <div class="project" data-modal="vr">
     <div class="project-top">
       <h3>🥽 VR 기반 디지털 치료제 연구 개발</h3>
@@ -361,6 +345,22 @@
       <li><b>결과</b> — 임금 정체·신규 수요 창출 등 인사이트를 도출, 전략 리포트로 전환하여 비즈니스 임팩트 정의.</li>
     </ul>
     <div class="tags"><span class="tag">Market Research</span><span class="tag">Secondary Data</span><span class="tag">전략 리포트</span><span class="tag">AI/LLM 트렌드</span></div>
+    <span class="more">자세히 보기 →</span>
+  </div>
+
+  <div class="project" data-modal="kbo">
+    <div class="project-top">
+      <h3>⚾ KBO Games — KBO 선수 데이터 퀴즈 게임 3종</h3>
+      <span class="period">2026.06 – 진행중</span>
+    </div>
+    <p class="role">게임 기획 · 기능 정의 · QA · 2인 팀 (AI 페어 프로그래밍)</p>
+    <ul>
+      <li><b>기획</b> — 해외 축구 팬 퀴즈 게임(Who Are Ya / Missing XI)에서 착안해 KBO(한국프로야구) 선수 데이터로 재구성한 3종 웹 브라우저 퀴즈 게임을 기획.</li>
+      <li><b>데이터 파이프라인</b> — KBO 타자·투수 실제 기록 CSV를 Python으로 가공해 역대 선수 3,486명, WAR5+ 718명, WAR10+ 433명 데이터셋을 자체 구축하고, 현역 184명의 소속팀 정보를 다중 소스로 교차 검증.</li>
+      <li><b>AI 협업 개발</b> — AI 코딩 어시스턴트(Claude)와 페어 프로그래밍하며 기능 구현·버그 수정·배포 트러블슈팅을 진행, UI 버그를 반복적으로 개선.</li>
+      <li><b>결과</b> — Next.js 16 기반으로 kbogames.com에 실제 배포, Vercel 빌드 실패 등 실전 배포 이슈를 직접 진단·해결.</li>
+    </ul>
+    <div class="tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Tailwind CSS</span><span class="tag">Python</span><span class="tag">Vercel</span></div>
     <span class="more">자세히 보기 →</span>
   </div>
 </section>
@@ -427,45 +427,6 @@
 </footer>
 
 <!-- ── Project Modals ── -->
-<div class="modal-overlay" id="modal-kbo">
-  <div class="modal">
-    <button class="modal-close" aria-label="닫기">✕</button>
-    <p class="m-meta">개인 프로젝트 · 2인 팀 · 2026.06 – 진행중</p>
-    <h3>KBO Games — KBO 선수 데이터 퀴즈 게임 3종</h3>
-    <p class="m-sub">kbogames.com · 게임 기획 · 기능 정의 · QA (AI 페어 프로그래밍)</p>
-    <h4>프로젝트 배경</h4>
-    <p>
-      해외 축구 팬들 사이에서 인기 있는 추리형 퀴즈 게임 "Who Are Ya"와 "Missing XI"에서 영감을 받아,
-      같은 재미를 KBO(한국프로야구) 팬들에게 제공하고 싶다는 생각에서 출발했습니다. 친구와 2인 팀을 이뤄
-      기획부터 배포까지 직접 만든 실제 서비스형 웹 게임입니다.
-    </p>
-    <h4>게임 구성 (3종)</h4>
-    <ul>
-      <li><b>WHO ARE YA</b> — Wordle 스타일 추리 게임. 선수 이름을 입력하면 팀/포지션/나이(상승·하락 표시)/투타/국적 6개 속성을 색상으로 피드백. 자동완성 검색, 난이도 3단계, 정답·실패 팝업, 구단 로고 뱃지 포함.</li>
-      <li><b>MISSING 9</b> — 특정 팀의 포지션별 라인업 9명을 모두 맞히는 게임. 오답 시 던지는 손 → 치는 손 → 출생연도 순으로 힌트가 단계적으로 공개.</li>
-      <li><b>CAREER PATH</b> — 선수의 소속팀 이력(기간)만 보고 3번의 기회 안에 이름을 맞히는 게임.</li>
-    </ul>
-    <h4>주요 수행 내용</h4>
-    <ul>
-      <li>게임 기획·기능 정의·QA를 담당하고, AI 코딩 어시스턴트(Claude)와 페어 프로그래밍하며 기능 구현·버그 수정·배포 트러블슈팅·데이터 정합성 검증을 진행</li>
-      <li>KBO 타자·투수 실제 기록 CSV를 Python 스크립트로 가공해 전체 역대 선수 3,486명, WAR5+ 718명, WAR10+ 433명, 커리어 경로 433개 데이터셋을 자체 구축</li>
-      <li>현역 선수 184명 데이터를 각 구단 로스터·이적/은퇴 뉴스 등 다중 소스로 교차 검증해 소속팀 정보를 최신화 (동명이인 오매칭 수정, 은퇴 선수 정리 포함)</li>
-      <li>저작권 이슈를 고려해 실제 구단 로고가 없는 경우 자동으로 이니셜 뱃지로 대체되는 폴백 컴포넌트 설계</li>
-      <li>Vercel 배포 실패(모듈 경로 오류) 등 실전 배포 트러블슈팅 경험</li>
-    </ul>
-    <h4>성과</h4>
-    <p>
-      Next.js 16(App Router) · React 19 · Tailwind CSS 4 기반으로 개발해 kbogames.com에 실제 배포하고
-      GitHub으로 버전 관리하는 서비스형 웹 프로젝트를 완주했습니다. AI와의 페어 프로그래밍으로 UI 버그
-      (정답 셀 색상 불일치, 팝업 UX 통일 등)를 반복적으로 개선하며 실전 협업 개발 경험을 쌓았습니다.
-    </p>
-    <div class="m-actions">
-      <a href="https://www.kbogames.com/" target="_blank" class="btn btn-primary">🌐 웹사이트 방문</a>
-      <a href="https://github.com/hhe516/kbo-games" target="_blank" class="btn btn-ghost">🐙 GitHub</a>
-    </div>
-  </div>
-</div>
-
 <div class="modal-overlay" id="modal-vr">
   <div class="modal">
     <button class="modal-close" aria-label="닫기">✕</button>
@@ -555,6 +516,45 @@
     </div>
   </div>
 </div>
+<div class="modal-overlay" id="modal-kbo">
+  <div class="modal">
+    <button class="modal-close" aria-label="닫기">✕</button>
+    <p class="m-meta">개인 프로젝트 · 2인 팀 · 2026.06 – 진행중</p>
+    <h3>KBO Games — KBO 선수 데이터 퀴즈 게임 3종</h3>
+    <p class="m-sub">kbogames.com · 게임 기획 · 기능 정의 · QA (AI 페어 프로그래밍)</p>
+    <h4>프로젝트 배경</h4>
+    <p>
+      해외 축구 팬들 사이에서 인기 있는 추리형 퀴즈 게임 "Who Are Ya"와 "Missing XI"에서 영감을 받아,
+      같은 재미를 KBO(한국프로야구) 팬들에게 제공하고 싶다는 생각에서 출발했습니다. 친구와 2인 팀을 이뤄
+      기획부터 배포까지 직접 만든 실제 서비스형 웹 게임입니다.
+    </p>
+    <h4>게임 구성 (3종)</h4>
+    <ul>
+      <li><b>WHO ARE YA</b> — Wordle 스타일 추리 게임. 선수 이름을 입력하면 팀/포지션/나이(상승·하락 표시)/투타/국적 6개 속성을 색상으로 피드백. 자동완성 검색, 난이도 3단계, 정답·실패 팝업, 구단 로고 뱃지 포함.</li>
+      <li><b>MISSING 9</b> — 특정 팀의 포지션별 라인업 9명을 모두 맞히는 게임. 오답 시 던지는 손 → 치는 손 → 출생연도 순으로 힌트가 단계적으로 공개.</li>
+      <li><b>CAREER PATH</b> — 선수의 소속팀 이력(기간)만 보고 3번의 기회 안에 이름을 맞히는 게임.</li>
+    </ul>
+    <h4>주요 수행 내용</h4>
+    <ul>
+      <li>게임 기획·기능 정의·QA를 담당하고, AI 코딩 어시스턴트(Claude)와 페어 프로그래밍하며 기능 구현·버그 수정·배포 트러블슈팅·데이터 정합성 검증을 진행</li>
+      <li>KBO 타자·투수 실제 기록 CSV를 Python 스크립트로 가공해 전체 역대 선수 3,486명, WAR5+ 718명, WAR10+ 433명, 커리어 경로 433개 데이터셋을 자체 구축</li>
+      <li>현역 선수 184명 데이터를 각 구단 로스터·이적/은퇴 뉴스 등 다중 소스로 교차 검증해 소속팀 정보를 최신화 (동명이인 오매칭 수정, 은퇴 선수 정리 포함)</li>
+      <li>저작권 이슈를 고려해 실제 구단 로고가 없는 경우 자동으로 이니셜 뱃지로 대체되는 폴백 컴포넌트 설계</li>
+      <li>Vercel 배포 실패(모듈 경로 오류) 등 실전 배포 트러블슈팅 경험</li>
+    </ul>
+    <h4>성과</h4>
+    <p>
+      Next.js 16(App Router) · React 19 · Tailwind CSS 4 기반으로 개발해 kbogames.com에 실제 배포하고
+      GitHub으로 버전 관리하는 서비스형 웹 프로젝트를 완주했습니다. AI와의 페어 프로그래밍으로 UI 버그
+      (정답 셀 색상 불일치, 팝업 UX 통일 등)를 반복적으로 개선하며 실전 협업 개발 경험을 쌓았습니다.
+    </p>
+    <div class="m-actions">
+      <a href="https://www.kbogames.com/" target="_blank" class="btn btn-primary">🌐 웹사이트 방문</a>
+      <a href="https://github.com/hhe516/kbo-games" target="_blank" class="btn btn-ghost">🐙 GitHub</a>
+    </div>
+  </div>
+</div>
+
 
 <script>
   // mobile menu
