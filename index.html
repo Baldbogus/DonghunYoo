@@ -130,6 +130,12 @@
   .titem .when{font-size:.83rem;color:var(--accent);font-weight:700;margin-bottom:4px}
   .titem h3{font-size:1.08rem;margin-bottom:4px}
   .titem p{color:var(--muted);font-size:.94rem}
+  .titem[data-modal]{cursor:pointer}
+  .titem .more{
+    display:inline-flex;align-items:center;gap:6px;margin-top:10px;
+    font-size:.85rem;font-weight:700;color:var(--accent);
+  }
+  .titem[data-modal]:hover .more{text-decoration:underline}
 
   /* ── Education ── */
   .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -369,10 +375,11 @@
   <span class="label">Experience &amp; Activities</span>
   <h2>경험 &amp; 활동</h2>
   <div class="timeline">
-    <div class="titem">
+    <div class="titem" data-modal="yana">
       <div class="when">2024.04</div>
       <h3>교내 동아리 LAMDA — 람다톤 (해커톤): YANA (You Are Not Alone)</h3>
       <p>Stony Brook·George Mason 4인 팀으로 유학생·여행자를 위한 현지 생활정보 플랫폼 'YANA(You Are Not Alone)'를 기획해 해커톤 피칭 자료로 완성. 설문조사·유학생 증가 추이 데이터를 근거로 문제를 정의하고, 구독·광고·라이선스 기반 비즈니스 모델과 시장 분석을 설계.</p>
+      <span class="more">자세히 보기 →</span>
     </div>
     <div class="titem">
       <div class="when">2024.03 – 2024.06</div>
@@ -381,8 +388,8 @@
     </div>
     <div class="titem">
       <div class="when">2022.08 – 2024.02</div>
-      <h3>대한민국 육군 — 중형차량운전병 (병장 만기전역)</h3>
-      <p>책임감과 성실함을 기반으로 복무 완수.</p>
+      <h3>대한민국 육군 — 1호차 운전병 (병장 만기전역)</h3>
+      <p>중형차량운전병으로 복무하며 지휘관 전용 차량인 '1호차'를 전담 운전. 촌각의 오차도 허용되지 않는 지휘관 일정에 맞춘 정확한 시간 관리와 안전 운행으로, 신뢰와 책임감을 바탕으로 복무를 완수.</p>
     </div>
     <div class="titem">
       <div class="when">2022.03 – 2022.06</div>
@@ -556,6 +563,42 @@
 </div>
 
 
+<div class="modal-overlay" id="modal-yana">
+  <div class="modal">
+    <button class="modal-close" aria-label="닫기">✕</button>
+    <p class="m-meta">교내 동아리 LAMDA · 람다톤(Lambdathon) 해커톤 · 4인 팀 · 2024.04</p>
+    <h3>YANA (You Are Not Alone)</h3>
+    <p class="m-sub">유학생·여행자를 위한 현지 생활정보 플랫폼 · 기획 &amp; 데이터 분석</p>
+    <h4>문제 정의</h4>
+    <p>
+      유학생이나 여행자가 현지에서 병원·약국·식당·행정기관 등을 찾을 때 대부분 구글 검색이나 블로그에
+      의존하지만, 정보가 중복되고 현지 상황과 동떨어져 있으며 광고성 콘텐츠가 섞여 있어 신뢰하기 어렵고
+      정보 탐색에 너무 많은 시간이 소모됩니다. 특히 응급 상황에서는 이 지연이 위험으로 이어질 수 있다는
+      문제의식에서 출발했습니다.
+    </p>
+    <h4>솔루션</h4>
+    <ul>
+      <li>현지 실데이터(약국 판매량, 병원 방문 수 등) 기반 랭킹화로 신뢰도 높은 정보를 빠르게 제공</li>
+      <li>유료 구독자 대상 AI 요약 리뷰, 건강·음식·생활·사회활동·응급상황 카테고리 분류</li>
+      <li>나이·체류 목적·위치 기반 맞춤형 추천과 실시간 커뮤니티 Q&amp;A 기능</li>
+    </ul>
+    <h4>주요 수행 내용 (기획 &amp; 데이터 분석)</h4>
+    <ul>
+      <li>유학생 대상 설문조사(사회문화적 어려움이 최대 애로사항으로 확인)와 유학생 수 증가 추이(IIE Open Doors, 2024) 등 2차 데이터를 근거로 문제를 정의하고 시장 규모(글로벌 유학생 640만 명, UNESCO 2022)를 분석</li>
+      <li>B2C 무료+구독, B2B 라이선스, 현지광고, 제휴 수수료로 구성된 비즈니스 모델과 경쟁사(Trip.com·Reddit 등) 대비 차별점을 정리</li>
+      <li>시드 투자 활용 계획(제품개발 40%·마케팅 30%·인건비 20%·운영비 10%)과 미국(뉴욕·캘리포니아) 테스트 시장 확장 전략을 수립</li>
+    </ul>
+    <h4>성과</h4>
+    <p>
+      문제 정의부터 데이터 근거, 비즈니스 모델, 시장·투자 분석까지 담은 피칭 포스터를 팀과 함께 기한 내
+      완성해 람다톤에서 발표했습니다.
+    </p>
+    <div class="m-actions">
+      <a href="projects/lambdathon-yana.pdf" target="_blank" class="btn btn-primary">📄 피칭 포스터 PDF 보기</a>
+    </div>
+  </div>
+</div>
+
 <script>
   // mobile menu
   const menuBtn=document.getElementById('menuBtn');
@@ -564,7 +607,7 @@
   navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
 
   // project modals
-  document.querySelectorAll('.project[data-modal]').forEach(card=>{
+  document.querySelectorAll('.project[data-modal], .titem[data-modal]').forEach(card=>{
     card.addEventListener('click',()=>{
       const m=document.getElementById('modal-'+card.dataset.modal);
       if(m){m.classList.add('open');document.body.classList.add('modal-open');}

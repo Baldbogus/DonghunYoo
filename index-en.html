@@ -163,6 +163,12 @@
   .titem .when{font-size:.83rem;color:var(--accent);font-weight:700;margin-bottom:4px}
   .titem h3{font-size:1.08rem;margin-bottom:4px}
   .titem p{color:var(--muted);font-size:.94rem}
+  .titem[data-modal]{cursor:pointer}
+  .titem .more{
+    display:inline-flex;align-items:center;gap:6px;margin-top:10px;
+    font-size:.85rem;font-weight:700;color:var(--accent);
+  }
+  .titem[data-modal]:hover .more{text-decoration:underline}
 
   /* ── Education ── */
   .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -368,10 +374,11 @@
   <span class="label">Experience &amp; Activities</span>
   <h2>Experience &amp; Activities</h2>
   <div class="timeline">
-    <div class="titem">
+    <div class="titem" data-modal="yana">
       <div class="when">Apr 2024</div>
       <h3>LAMDA Club — "Lambdathon" Hackathon: YANA (You Are Not Alone)</h3>
       <p>Designed "YANA (You Are Not Alone)," a local-life information platform for international students and travelers, with a 4-person team from Stony Brook and George Mason, completed as a hackathon pitch. Defined the problem using survey and international-student growth data, then designed the business model (subscription, advertising, licensing) and market analysis.</p>
+      <span class="more">View details →</span>
     </div>
     <div class="titem">
       <div class="when">Mar – Jun 2024</div>
@@ -380,8 +387,8 @@
     </div>
     <div class="titem">
       <div class="when">Aug 2022 – Feb 2024</div>
-      <h3>Republic of Korea Army — Vehicle Operator (Sergeant, honorable discharge)</h3>
-      <p>Completed mandatory military service with responsibility and discipline.</p>
+      <h3>Republic of Korea Army — Commander's Personal Driver (Sergeant, Honorable Discharge)</h3>
+      <p>Served as a vehicle operator personally entrusted with driving the unit commander's designated vehicle. Delivered punctual, safe transportation on a zero-margin schedule, completing service with trustworthiness and responsibility.</p>
     </div>
     <div class="titem">
       <div class="when">Mar – Jun 2022</div>
@@ -561,6 +568,42 @@
 </div>
 
 
+<div class="modal-overlay" id="modal-yana">
+  <div class="modal">
+    <button class="modal-close" aria-label="close">✕</button>
+    <p class="m-meta">LAMDA Club · "Lambdathon" Hackathon · Team of 4 · Apr 2024</p>
+    <h3>YANA (You Are Not Alone)</h3>
+    <p class="m-sub">A local-life information platform for international students and travelers · Planning &amp; Data Analysis</p>
+    <h4>Problem Statement</h4>
+    <p>
+      When international students or travelers need to find hospitals, pharmacies, restaurants, or
+      administrative offices in a new country, they usually rely on Google searches or blogs — but this
+      information is often duplicated, disconnected from the local context, and mixed with advertising,
+      making it hard to trust and costly in time. In emergencies, that delay can become genuinely risky.
+    </p>
+    <h4>Solution</h4>
+    <ul>
+      <li>Ranking based on real local data (pharmacy sales volume, hospital visit counts, etc.) for fast, reliable information</li>
+      <li>AI-summarized reviews for paid subscribers, with content organized into Health, Food, Living, Social, and Emergency categories</li>
+      <li>Personalized recommendations by age, purpose of stay, and location, plus real-time community Q&amp;A</li>
+    </ul>
+    <h4>What I did (Planning &amp; Data Analysis)</h4>
+    <ul>
+      <li>Defined the problem using a survey of international students (sociocultural challenges ranked as the top difficulty) and enrollment growth trends (IIE Open Doors, 2024), and sized the market (6.4M international students worldwide, UNESCO 2022)</li>
+      <li>Built out the business model — B2C freemium + subscription, B2B licensing, local advertising, and affiliate fees — and mapped differentiation against competitors like Trip.com and Reddit</li>
+      <li>Planned seed-funding allocation (40% product, 30% marketing, 20% personnel, 10% operations) and a U.S. test-market expansion strategy (New York, California)</li>
+    </ul>
+    <h4>Results</h4>
+    <p>
+      Delivered a complete pitch poster — problem statement, data-backed evidence, business model, and
+      market/investment analysis — with the team on schedule, and presented it at Lambdathon.
+    </p>
+    <div class="m-actions">
+      <a href="projects/lambdathon-yana.pdf" target="_blank" class="btn btn-primary">📄 View Pitch Poster (PDF)</a>
+    </div>
+  </div>
+</div>
+
 <script>
   // mobile menu
   const menuBtn=document.getElementById('menuBtn');
@@ -569,7 +612,7 @@
   navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
 
   // project modals
-  document.querySelectorAll('.project[data-modal]').forEach(card=>{
+  document.querySelectorAll('.project[data-modal], .titem[data-modal]').forEach(card=>{
     card.addEventListener('click',()=>{
       const m=document.getElementById('modal-'+card.dataset.modal);
       if(m){m.classList.add('open');document.body.classList.add('modal-open');}
