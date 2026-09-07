@@ -299,6 +299,22 @@
   <span class="label">Projects</span>
   <h2>Featured Projects</h2>
 
+  <div class="project" data-modal="kbo">
+    <div class="project-top">
+      <h3>⚾ KBO Games — 3 Browser Quiz Games on KBO Player Data</h3>
+      <span class="period">Jun 2026 – Present</span>
+    </div>
+    <p class="role">Game Design · Feature Spec · QA · Team of 2 (AI-paired programming)</p>
+    <ul>
+      <li><b>Concept</b> — Inspired by football fan quiz games "Who Are Ya" and "Missing XI," rebuilt around real KBO (Korea Baseball Organization) player data into a set of 3 browser-based quiz games.</li>
+      <li><b>Data pipeline</b> — Processed real KBO batting/pitching CSVs with Python to build custom datasets: 3,486 all-time players, 718 WAR5+ players, and 433 WAR10+ players, cross-verifying the 184-player active roster against multiple sources.</li>
+      <li><b>AI-paired development</b> — Worked in an AI-paired-programming workflow with Claude to implement features, fix bugs, and troubleshoot deployment, iteratively improving UI issues.</li>
+      <li><b>Outcome</b> — Shipped live on kbogames.com with Next.js 16, personally diagnosing and fixing a production Vercel build failure.</li>
+    </ul>
+    <div class="tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Tailwind CSS</span><span class="tag">Python</span><span class="tag">Vercel</span></div>
+    <span class="more">View details →</span>
+  </div>
+
   <div class="project" data-modal="vr">
     <div class="project-top">
       <h3>🥽 VR-Based Digital Therapeutics R&amp;D</h3>
@@ -410,6 +426,46 @@
 </footer>
 
 <!-- ── Project Modals ── -->
+<div class="modal-overlay" id="modal-kbo">
+  <div class="modal">
+    <button class="modal-close" aria-label="close">✕</button>
+    <p class="m-meta">Personal Project · Team of 2 · Jun 2026 – Present</p>
+    <h3>KBO Games — 3 Browser Quiz Games on KBO Player Data</h3>
+    <p class="m-sub">kbogames.com · Game Design · Feature Spec · QA (AI-paired programming)</p>
+    <h4>Background</h4>
+    <p>
+      Inspired by the popular football fan guessing games "Who Are Ya" and "Missing XI," I wanted to
+      bring the same experience to fans of the KBO (Korea Baseball Organization). Built as a 2-person
+      team with a friend, this is a real, shipped web product I designed and helped build end to end.
+    </p>
+    <h4>Games (3)</h4>
+    <ul>
+      <li><b>WHO ARE YA</b> — A Wordle-style guessing game. Guessing a player's name compares 6 attributes (team, position, age with up/down indicators, throw/bat hand, nationality) with color-coded feedback. Includes autocomplete, 3 difficulty tiers, win/loss popups, and team logo badges.</li>
+      <li><b>MISSING 9</b> — Guess all 9 starting-lineup players for a given team, position by position. Wrong guesses progressively reveal hints — throwing hand, batting hand, then birth year.</li>
+      <li><b>CAREER PATH</b> — Guess a player's identity from their team-history timeline alone, with 3 attempts.</li>
+    </ul>
+    <h4>What I did</h4>
+    <ul>
+      <li>Led game design, feature specification, and QA, working in an AI-paired-programming workflow with Claude to implement features, fix bugs, troubleshoot deployment, and verify data accuracy</li>
+      <li>Processed real KBO batting/pitching stat CSVs with Python scripts to build custom datasets: 3,486 all-time players, 718 WAR5+ players, 433 WAR10+ players, and 433 career-path records</li>
+      <li>Cross-referenced the 184-player active roster against multiple sources (team rosters, transfer/retirement news) to correct outdated affiliations, fix name-collision mismatches, and remove confirmed retirees</li>
+      <li>Designed a copyright-safe logo component that falls back to an initials badge when no official team logo asset is available</li>
+      <li>Hands-on production deployment troubleshooting, including diagnosing and fixing a Vercel build failure caused by an incorrect module import path</li>
+    </ul>
+    <h4>Results</h4>
+    <p>
+      Built with Next.js 16 (App Router), React 19, and Tailwind CSS 4, and shipped live on kbogames.com
+      with version control on GitHub. Iteratively improved UI/UX issues (mismatched result-cell coloring,
+      inconsistent popups) through AI-paired development, gaining hands-on experience in real-world
+      collaborative software delivery.
+    </p>
+    <div class="m-actions">
+      <a href="https://www.kbogames.com/" target="_blank" class="btn btn-primary">🌐 Visit Website</a>
+      <a href="https://github.com/hhe516/kbo-games" target="_blank" class="btn btn-ghost">🐙 GitHub</a>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="modal-vr">
   <div class="modal">
     <button class="modal-close" aria-label="close">✕</button>
