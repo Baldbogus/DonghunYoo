@@ -368,6 +368,21 @@
     <div class="tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Tailwind CSS</span><span class="tag">Python</span><span class="tag">Vercel</span></div>
     <span class="more">View details →</span>
   </div>
+  <div class="project" data-modal="wine">
+    <div class="project-top">
+      <h3>🍷 Global Wine Review &amp; Evaluation Database</h3>
+      <span class="period">Sep – Dec 2025</span>
+    </div>
+    <p class="role">Data Cleaning · Schema Design · SQL · Stony Brook University (Team of 3)</p>
+    <ul>
+      <li><b>Problem</b> — No relational database existed to answer questions like "Which countries produce higher-rated wines on average?" or "Do higher prices always mean higher ratings?" from raw global wine review data.</li>
+      <li><b>Data cleaning</b> — Led entity cleaning in BigQuery SQL, using regular expressions (REGEXP_EXTRACT, REGEXP_CONTAINS) and CTEs to filter out noisy text and split "region, country" strings into separate fields.</li>
+      <li><b>Schema design</b> — Normalized the data into 5 entities (Appellations, Wineries, Wines, Reviewers, Reviews) and completed a relational schema in MS Access with AutoNumber primary keys, UPDATE JOIN-based foreign key mapping, and enforced referential integrity.</li>
+      <li><b>Outcome</b> — Wrote GROUP BY and aggregate-function queries and reports for average price/rating by country and region, and in an individual assignment went through the full database design cycle — multi-table joins, subqueries, and a 1:N ERD built in MySQL Workbench.</li>
+    </ul>
+    <div class="tags"><span class="tag">SQL</span><span class="tag">BigQuery</span><span class="tag">MS Access</span><span class="tag">MySQL Workbench</span><span class="tag">Relational DB Design</span></div>
+    <span class="more">View details →</span>
+  </div>
 </section>
 
 <section id="experience" class="reveal">
@@ -563,6 +578,42 @@
     <div class="m-actions">
       <a href="https://www.kbogames.com/" target="_blank" class="btn btn-primary">🌐 Visit Website</a>
       <a href="https://github.com/hhe516/kbo-games" target="_blank" class="btn btn-ghost">🐙 GitHub</a>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal-overlay" id="modal-wine">
+  <div class="modal">
+    <button class="modal-close" aria-label="close">✕</button>
+    <p class="m-meta">ISE 305 · Database Management · Fall 2025 · Team of 3</p>
+    <h3>Global Wine Review and Evaluation Database</h3>
+    <p class="m-sub">Cleaning global wine review data &amp; relational database design · Data Cleaning · Schema Design · SQL</p>
+    <h4>Background</h4>
+    <p>
+      Wine is a culturally rich, globally diverse beverage, but understanding each wine's
+      characteristics and interpreting expert reviews isn't easy for casual drinkers. We set out
+      to clean raw global wine review data and design a relational database capturing country,
+      region, winery, reviewer, and rating information — building a system that could answer
+      questions like "which countries produce higher-rated wines on average?" and "do higher
+      prices always mean higher ratings?"
+    </p>
+    <h4>What I did</h4>
+    <ul>
+      <li>Worked with roughly 320,000 raw wine review records in BigQuery SQL, using regular expressions (REGEXP_EXTRACT, REGEXP_CONTAINS) and CTEs (WITH clauses) to filter out noisy text like "$10, Buy Now" and split "region, country" strings into separate country/region fields</li>
+      <li>Normalized the cleaned data into 5 entities — Appellations, Wineries, Wines, Reviewers, Reviews — and set an AutoNumber primary key on each table in MS Access</li>
+      <li>Filled in foreign keys with UPDATE JOIN queries to connect the tables, completing a relational schema with enforced referential integrity</li>
+      <li>Wrote analysis queries using GROUP BY and aggregate functions (AVG, COUNT) to produce reports on average price and review counts by country and region</li>
+      <li>In a related individual assignment, wrote SQL queries using multi-table joins, GROUP BY, HAVING, and subqueries for weighted-average calculations and conditional group filtering, and designed a 1:N ERD with primary/foreign keys in MySQL Workbench</li>
+    </ul>
+    <h4>Results</h4>
+    <p>
+      Experienced the full database design lifecycle within the team — from raw data cleaning to
+      normalized relational schema design, referential integrity, and aggregate analysis queries —
+      working hands-on across BigQuery SQL, MS Access SQL, and MySQL Workbench.
+    </p>
+    <div class="m-actions">
+      <a href="projects/wine-review-database.pdf" target="_blank" class="btn btn-primary">📄 View Presentation (PDF)</a>
     </div>
   </div>
 </div>
